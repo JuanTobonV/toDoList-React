@@ -1,4 +1,3 @@
-import './App.css';
 import React from 'react';
 import { TodoSearch } from './components/TodoSearch';
 import { TodoCounter } from './components/TodoCounter';
@@ -23,7 +22,7 @@ const defaultTodos = [
   },
 
   {
-    text: 'Llorar',
+    text: 'si',
     completed: false,
   }
   
@@ -33,18 +32,59 @@ function App() {
   return (
     
     <React.Fragment>
-      <TodoCounter completed={16} total={25}/>
 
-      <TodoSearch/>
 
-      <TodoList>
-        {defaultTodos.map(todo => (
-          <TodoItem/>
-        ))}
-      </TodoList>
+      <section className = "toDo__MainContainer">
+
+        <div className = "toDo__card">
+
+        
+          <TodoCounter completed={5} total={10}/>
+
+
+          <TodoSearch>
+            <CreateTodoButton/> 
+          </TodoSearch> 
+          
+          <TodoList>
+              {defaultTodos.map(todo => (
+                <TodoItem 
+                key={todo.text} 
+                text={todo.text}
+                completed={todo.completed}
+                />
+              ))}
+          </TodoList>
+
+    
+
+
+
+
+
+        </div>
+
+
+        {/*
+
+        <TodoSearch/>
+
+        <TodoList>
+          {defaultTodos.map(todo => (
+            <TodoItem 
+            key={todo.text} 
+            text={todo.text}
+            completed={todo.completed}
+            />
+          ))}
+        </TodoList>
+
+
+        <CreateTodoButton/>*/}
       
+      </section>
 
-      <CreateTodoButton/>
+
       
       
     </React.Fragment>

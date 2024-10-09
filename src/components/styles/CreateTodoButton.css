@@ -1,0 +1,20 @@
+.toDo__searchBar--addButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    width: 40%;
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    flex-wrap: nowrap;
+    cursor: pointer;
+    transition: 0.2s ;
+    font-weight: bold;
+}
+
+.toDo__searchBar--addButton:hover{
+    background-color: rgb(83, 83, 83);
+
+}

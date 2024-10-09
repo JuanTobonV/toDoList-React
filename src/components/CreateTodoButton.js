@@ -1,7 +1,8 @@
+import './styles/CreateTodoButton.css';
 function CreateTodoButton(){
     return(
-        <button>
-            +
+        <button className="toDo__searchBar--addButton">
+            + Add
         </button>
     );
 }

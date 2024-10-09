@@ -1,0 +1,9 @@
+.toDo__card--item{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding:15px;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+    
+}
