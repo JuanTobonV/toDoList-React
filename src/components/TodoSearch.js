@@ -1,16 +1,33 @@
+import React from 'react';
 import './styles/TodoSearch.css';
+import { CreateTodoButton } from './CreateTodoButton';
 
-function TodoSearch(props) {
+function TodoSearch({
+    searchValue,
+    setSearchValue,
+    props
+    
+    }) {
+
     return (
+
         <div className="todo__card-searchBardiv">
 
-            <input className="toDo__card--searchBar" type="text" placeholder="Add new task" />
+            <input className="toDo__card--searchBar"
+                   placeholder="Add new task" 
+                   value={searchValue}
+                   onChange={
+                   (event) => {
+                        
+                        setSearchValue(event.target.value);
 
-            {props.children}
+                    }
+                } 
+            
+            />
 
-            {/*<p className="toDo__searchBar--addButton">
-                + Add
-            </p>*/}
+            <CreateTodoButton/>
+
         </div>
     );
 }
