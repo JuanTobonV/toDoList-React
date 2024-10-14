@@ -3,7 +3,6 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodoCounter } from './components/TodoCounter';
 import { TodoList } from './components/TodoList';
 import { TodoItem } from './components/TodoItem';
-import { CreateTodoButton } from './components/CreateTodoButton';
 
 const defaultTodos = [
   {

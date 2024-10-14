@@ -19,24 +19,3 @@
     text-decoration: line-through;
   }
   
-  .Icon {
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 70px;
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  
-  .Icon-check--active {
-    color: #4caf50;
-  }
-  
-  .Icon-delete {
-    
-  }
-  .Icon-delete:hover {
-    color: red;
-  }
