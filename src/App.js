@@ -4,37 +4,55 @@ import { TodoCounter } from './components/TodoCounter';
 import { TodoList } from './components/TodoList';
 import { TodoItem } from './components/TodoItem';
 
-const defaultTodos = [
-  {
-    text: 'Cortar Cebolla',
-    completed: true,
-  },
+// const defaultTodos = [
+//   {
+//     text: 'Cortar Cebolla',
+//     completed: true,
+//   },
 
-  {
-    text: 'Completar curso',
-    completed: false,
-  },
+//   {
+//     text: 'Completar curso',
+//     completed: false,
+//   },
 
-  {
-    text: 'Llorar',
-    completed: true,
-  },
+//   {
+//     text: 'Llorar',
+//     completed: true,
+//   },
 
-  {
-    text: 'si',
-    completed: false,
-  },
+//   {
+//     text: 'si',
+//     completed: false,
+//   },
 
-  {
-    text: 'LALALALALA',
-    completed: true,
-  }
+//   {
+//     text: 'LALALALALA',
+//     completed: true,
+//   }
   
-]
+// ]
+
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+
+// localStorage.removeItem('TODOS_V1')
 
 function App() {
 
-  const [todos,setTodos] = React.useState(defaultTodos); //Estado que recibe un array con los distintos objetos ToDo's y servirá para contarlos
+  const localStorageTodos = localStorage.getItem('TODOS_V1');
+
+  let parsedTodos;
+
+  if(!localStorageTodos) {
+    localStorage.setItem('TODOS_V1', JSON.stringify([]));
+    parsedTodos = [];
+  } else {
+    parsedTodos = JSON.parse(localStorageTodos);
+  }
+
+
+  //Estados de react 
+
+  const [todos,setTodos] = React.useState(parsedTodos); //Estado que recibe un array con los distintos objetos ToDo's y servirá para contarlos
 
   const [searchValue, setSearchValue] = React.useState(''); //Estado que inicialmente es un string vacio y que recibirá
                                                             //los values que los users escriban en el input
@@ -55,13 +73,21 @@ function App() {
 
   );
 
+  const saveTodos = (newTodos) => { 
+
+    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
+
+    setTodos(newTodos)
+  }
+
+
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(
       (todo) => todo.text === text);
     
     const newTodos = [...todos]
     newTodos[todoIndex].completed = !newTodos[todoIndex].completed;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }; 
 
   const deleteTodo = (text) => {
@@ -70,9 +96,14 @@ function App() {
       (todo) => todo.text === text
     );
     newTodos.splice(todoIndex, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   }; 
 
+  // ////////////////////////////////////////////////////////////////// 
+
+
+
+  //En este return, vamos a llamar y renderizar a todos nuestros componentes y escribir código JSX.
 
   return (
     
