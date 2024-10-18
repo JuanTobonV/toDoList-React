@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles/TodoSearch.css';
-import { CreateTodoButton } from '../components/CreateTodoButton/CreateTodoButton';
+import { CreateTodoButton } from '../CreateTodoButton/CreateTodoButton';
 
 function TodoSearch({
     searchValue,

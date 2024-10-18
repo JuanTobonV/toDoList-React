@@ -1,8 +1,8 @@
 import React from 'react';
-import { TodoSearch } from './TodoSearch/TodoSearch';
+import { TodoSearch } from './components/TodoSearch/TodoSearch';
 import { TodoCounter } from './components/TodoCounter/TodoCounter';
 import { TodoList } from './TodoList/TodoList';
-import { TodoItem } from './TodoItem/TodoItem';
+import { TodoItem } from './components/TodoItem/TodoItem';
 
 const defaultTodos = [
   {

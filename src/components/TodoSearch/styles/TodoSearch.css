@@ -1,0 +1,27 @@
+
+.todo__card-searchBardiv{
+    display: flex;
+    justify-content: space-evenly;
+    gap: 5px;
+    align-items: center;
+    
+}
+
+.toDo__card--searchBar {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 10px;
+    line-height: 50px; 
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+
+}
+
+.toDo__card--searchBar::placeholder {
+    line-height: 50px; 
+}
+
+.toDo__card--searchBar:focus {
+    outline-color: cadetblue;
+}
