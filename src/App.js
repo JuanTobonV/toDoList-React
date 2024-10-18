@@ -1,58 +1,74 @@
 import React from 'react';
-import { TodoSearch } from './components/TodoSearch';
-import { TodoCounter } from './components/TodoCounter';
-import { TodoList } from './components/TodoList';
-import { TodoItem } from './components/TodoItem';
+import { TodoSearch } from './TodoSearch/TodoSearch';
+import { TodoCounter } from './components/TodoCounter/TodoCounter';
+import { TodoList } from './TodoList/TodoList';
+import { TodoItem } from './TodoItem/TodoItem';
 
-// const defaultTodos = [
-//   {
-//     text: 'Cortar Cebolla',
-//     completed: true,
-//   },
+const defaultTodos = [
+  {
+    text: 'Cortar Cebolla',
+    completed: true,
+  },
 
-//   {
-//     text: 'Completar curso',
-//     completed: false,
-//   },
+  {
+    text: 'Completar curso',
+    completed: false,
+  },
 
-//   {
-//     text: 'Llorar',
-//     completed: true,
-//   },
+  {
+    text: 'Llorar',
+    completed: true,
+  },
 
-//   {
-//     text: 'si',
-//     completed: false,
-//   },
+  {
+    text: 'si',
+    completed: false,
+  },
 
-//   {
-//     text: 'LALALALALA',
-//     completed: true,
-//   }
+  {
+    text: 'LALALALALA',
+    completed: true,
+  }
   
-// ]
+]
 
-// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
-// localStorage.removeItem('TODOS_V1')
+localStorage.removeItem('TODOS_V1')
+
+function useLocalStorage(itemName, initialValue){ //Usamos la palabra useNombreCustomHook para indicar que es un customhook, no una funcion cualquiera. Usamos como parametros: itemName para guardar en el localStorage lo que le pasemos como parametro e initialValue para pasarle por parametro el valor inicial.
+  
+
+  const localStorageItem = localStorage.getItem(itemName);
+
+  let parsedItem;
+
+  if(!localStorageItem) {
+    localStorage.setItem(itemName, JSON.stringify(initialValue));
+    parsedItem = initialValue;
+  } else {
+    parsedItem = JSON.parse(localStorageItem);
+  }
+
+  const [item, setItem] = React.useState(parsedItem); //Lo nombramos items porqué eso es como lo define el contenido el local Storage internamente
+
+
+  const saveItem = (newItem) => { 
+
+    localStorage.setItem(itemName, JSON.stringify(newItem));
+
+    setItem(newItem)
+  }
+
+  return [item,saveItem];
+
+}
 
 function App() {
 
-  const localStorageTodos = localStorage.getItem('TODOS_V1');
-
-  let parsedTodos;
-
-  if(!localStorageTodos) {
-    localStorage.setItem('TODOS_V1', JSON.stringify([]));
-    parsedTodos = [];
-  } else {
-    parsedTodos = JSON.parse(localStorageTodos);
-  }
-
-
   //Estados de react 
 
-  const [todos,setTodos] = React.useState(parsedTodos); //Estado que recibe un array con los distintos objetos ToDo's y servirá para contarlos
+  const [todos,saveTodos] = useLocalStorage('TODOS_V1', []); //Estado que recibe un array con los distintos objetos ToDo's y servirá para contarlos
 
   const [searchValue, setSearchValue] = React.useState(''); //Estado que inicialmente es un string vacio y que recibirá
                                                             //los values que los users escriban en el input
@@ -72,14 +88,6 @@ function App() {
     }
 
   );
-
-  const saveTodos = (newTodos) => { 
-
-    localStorage.setItem('TODOS_V1', JSON.stringify(newTodos));
-
-    setTodos(newTodos)
-  }
-
 
   const completeTodo = (text) => {
     const todoIndex = todos.findIndex(
