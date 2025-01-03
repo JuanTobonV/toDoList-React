@@ -1,68 +1,42 @@
 import React from 'react';
 import { TodoSearch } from './components/TodoSearch/TodoSearch';
 import { TodoCounter } from './components/TodoCounter/TodoCounter';
-import { TodoList } from './TodoList/TodoList';
+import { TodoList } from './components/TodoList/TodoList';
 import { TodoItem } from './components/TodoItem/TodoItem';
+import { useLocalStorage } from './components/Hooks/useLocalStorage';
 
-const defaultTodos = [
-  {
-    text: 'Cortar Cebolla',
-    completed: true,
-  },
+// const defaultTodos = [
+//   {
+//     text: 'Cortar Cebolla',
+//     completed: true,
+//   },
 
-  {
-    text: 'Completar curso',
-    completed: false,
-  },
+//   {
+//     text: 'Completar curso',
+//     completed: false,
+//   },
 
-  {
-    text: 'Llorar',
-    completed: true,
-  },
+//   {
+//     text: 'Llorar',
+//     completed: true,
+//   },
 
-  {
-    text: 'si',
-    completed: false,
-  },
+//   {
+//     text: 'si',
+//     completed: false,
+//   },
 
-  {
-    text: 'LALALALALA',
-    completed: true,
-  }
+//   {
+//     text: 'LALALALALA',
+//     completed: true,
+//   }
   
-]
+// ]
 
-localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
-localStorage.removeItem('TODOS_V1')
+// localStorage.removeItem('TODOS_V1')
 
-function useLocalStorage(itemName, initialValue){ //Usamos la palabra useNombreCustomHook para indicar que es un customhook, no una funcion cualquiera. Usamos como parametros: itemName para guardar en el localStorage lo que le pasemos como parametro e initialValue para pasarle por parametro el valor inicial.
-  
-
-  const localStorageItem = localStorage.getItem(itemName);
-
-  let parsedItem;
-
-  if(!localStorageItem) {
-    localStorage.setItem(itemName, JSON.stringify(initialValue));
-    parsedItem = initialValue;
-  } else {
-    parsedItem = JSON.parse(localStorageItem);
-  }
-
-  const [item, setItem] = React.useState(parsedItem); //Lo nombramos items porqué eso es como lo define el contenido el local Storage internamente
-
-
-  const saveItem = (newItem) => { 
-
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-
-    setItem(newItem)
-  }
-
-  return [item,saveItem];
-
-}
 
 function App() {
 

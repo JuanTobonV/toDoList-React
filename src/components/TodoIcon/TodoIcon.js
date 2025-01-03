@@ -1,6 +1,6 @@
-import {ReactComponent as CheckSVG} from '../assets/check.svg'
+import {ReactComponent as CheckSVG} from '../../assets/check.svg'
 
-import {ReactComponent as DeleteSVG} from '../assets/delete.svg'
+import {ReactComponent as DeleteSVG} from '../../assets/delete.svg'
 
 import './styles/TodoIcon.css'
 
