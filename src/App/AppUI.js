@@ -9,6 +9,7 @@ import {EmptyTodos} from '../EmptyTodos'
 
 import { TodoContext } from '../TodoContext';
 import { useContext } from 'react';
+import { Modal } from '../Modal';
 
 
 
@@ -19,9 +20,11 @@ function AppUI() {
     error,
     searchedTodos,
     completeTodo,
-    deleteTodo
+    deleteTodo,
+    openModal,
+    setOpenModal
   } = useContext(TodoContext)
-  
+
   return (
     <>
       <TodoCounter
@@ -56,7 +59,18 @@ function AppUI() {
         ))}
       </TodoList>
       
-      <CreateTodoButton />
+      <CreateTodoButton
+        setOpenModal={setOpenModal}
+      />
+
+      {
+        openModal && (
+          <Modal>
+            <TodoForm/>
+
+          </Modal>
+        )
+      }
     </>
   );
 }
