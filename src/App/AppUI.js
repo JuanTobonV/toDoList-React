@@ -8,10 +8,20 @@ import {TodosError} from '../TodosError'
 import {EmptyTodos} from '../EmptyTodos'
 
 import { TodoContext } from '../TodoContext';
+import { useContext } from 'react';
 
 
 
 function AppUI() {
+
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo
+  } = useContext(TodoContext)
+  
   return (
     <>
       <TodoCounter
@@ -21,15 +31,6 @@ function AppUI() {
 
       />
 
-    <TodoContext.Consumer>
-
-      {({
-        loading,
-        error,
-        searchedTodos,
-        completeTodo,
-        deleteTodo
-      })=>(
         <TodoList>
 
         {loading && (
@@ -54,10 +55,6 @@ function AppUI() {
           />
         ))}
       </TodoList>
-
-      )}
-        
-    </TodoContext.Consumer>
       
       <CreateTodoButton />
     </>
