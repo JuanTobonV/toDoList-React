@@ -10,6 +10,7 @@ import {EmptyTodos} from '../EmptyTodos'
 import { TodoContext } from '../TodoContext';
 import { useContext } from 'react';
 import { Modal } from '../Modal';
+import { TodoForm } from '../TodoForm';
 
 
 
@@ -22,7 +23,7 @@ function AppUI() {
     completeTodo,
     deleteTodo,
     openModal,
-    setOpenModal
+    setOpenModal,
   } = useContext(TodoContext)
 
   return (
