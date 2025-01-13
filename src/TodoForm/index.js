@@ -1,14 +1,8 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import './todoForm.css'
-import { TodoContext } from '../TodoContext';
 
-export function TodoForm(){
+export function TodoForm({setOpenModal,addTodo}){
 
-    const {
-        setOpenModal,
-        addTodo,
-
-    } = useContext(TodoContext)
 
     const handleEvent = (e) => {
         e.preventDefault();
